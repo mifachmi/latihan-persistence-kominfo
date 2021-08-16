@@ -1,8 +1,8 @@
 package kominfo.go.id.latihanstorage;
 
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,7 +40,7 @@ public class InternalActivity extends AppCompatActivity implements View.OnClickL
         String isiFile = "Coba Isi Data File Text";
         File file = new File(getFilesDir(), FILENAME);
 
-        FileOutputStream outputStream = null;
+        FileOutputStream outputStream;
         try {
             file.createNewFile();
             outputStream = new FileOutputStream(file, true);
@@ -57,7 +57,7 @@ public class InternalActivity extends AppCompatActivity implements View.OnClickL
 
         File file = new File(getFilesDir(), FILENAME);
 
-        FileOutputStream outputStream = null;
+        FileOutputStream outputStream;
         try {
             file.createNewFile();
             outputStream = new FileOutputStream(file, false);
@@ -106,6 +106,7 @@ public class InternalActivity extends AppCompatActivity implements View.OnClickL
         jalankanPerintah(v.getId());
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void jalankanPerintah(int id) {
         switch (id) {
             case R.id.buttonBuatFile:

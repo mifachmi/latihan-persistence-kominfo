@@ -4,13 +4,11 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,7 +22,7 @@ import java.io.IOException;
 public class EksternalActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String FILENAME = "namafile.txt";
-    public static String TAG = BuildConfig.APPLICATION_ID;
+//    public static String TAG = BuildConfig.APPLICATION_ID;
     public static final int REQUEST_CODE_STORAGE = 100;
 
     Button buatFile, ubahFile, bacaFile, deleteFile;
@@ -69,12 +67,10 @@ public class EksternalActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case REQUEST_CODE_STORAGE:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    jalankanPerintah(selectEvent);
-                }
-                break;
+        if (requestCode == REQUEST_CODE_STORAGE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                jalankanPerintah(selectEvent);
+            }
         }
     }
 
@@ -87,7 +83,7 @@ public class EksternalActivity extends AppCompatActivity implements View.OnClick
         }
         File file = new File(Environment.getExternalStorageDirectory(), FILENAME);
 
-        FileOutputStream outputStream = null;
+        FileOutputStream outputStream;
         try {
             file.createNewFile();
             outputStream = new FileOutputStream(file, true);
@@ -108,7 +104,7 @@ public class EksternalActivity extends AppCompatActivity implements View.OnClick
         }
         File file = new File(Environment.getExternalStorageDirectory(), FILENAME);
 
-        FileOutputStream outputStream = null;
+        FileOutputStream outputStream;
         try {
             file.createNewFile();
             outputStream = new FileOutputStream(file, false);
@@ -153,6 +149,7 @@ public class EksternalActivity extends AppCompatActivity implements View.OnClick
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
 
@@ -169,6 +166,7 @@ public class EksternalActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void jalankanPerintah(int id) {
         switch (id) {
             case R.id.buttonBuatFile:
