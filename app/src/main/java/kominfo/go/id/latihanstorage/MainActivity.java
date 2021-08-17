@@ -11,8 +11,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button internalStorage,eksternalStorage;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         eksternalStorage = findViewById(R.id.externalStorage);
         internalStorage.setOnClickListener(this);
         eksternalStorage.setOnClickListener(this);
-
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -37,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(eksternal);
                 break;
         }
-
     }
-
 
 }

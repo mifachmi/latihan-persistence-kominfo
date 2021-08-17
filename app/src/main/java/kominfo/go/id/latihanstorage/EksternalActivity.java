@@ -183,9 +183,4 @@ public class EksternalActivity extends AppCompatActivity implements View.OnClick
                 break;
         }
     }
-
-
-
-
-
 }
